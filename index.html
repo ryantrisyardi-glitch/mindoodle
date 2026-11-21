@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="id"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#7541C8"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-180.png">
 <title>Mindoodle – Mind Map</title>
 <!--
 SETUP (sekali saja):
@@ -93,11 +93,30 @@ header input{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,
 #te{position:fixed;z-index:45;border:2px solid var(--k);border-radius:14px;padding:8px 10px;resize:none;text-align:center;font-weight:600;box-shadow:0 10px 30px rgba(110,63,170,.25)}
 #hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:rgba(41,50,71,.88);color:#fff;padding:8px 16px;border-radius:99px;font-size:12px;animation:fi .5s;pointer-events:none;white-space:nowrap}
 @media(max-width:700px){#ti{width:120px}#q{width:90px}#hint{white-space:normal;width:90%;text-align:center}}
+html,body{height:100%;overflow:hidden;overscroll-behavior:none}body{font-size:13px}
+#ed[hidden],#home[hidden]{display:none!important}
+header{position:fixed!important;left:0;right:0;top:0;overflow:visible!important}
+#home{position:fixed;left:0;right:0;top:calc(52px + env(safe-area-inset-top,0px));bottom:0;overflow:auto;margin:0!important;max-width:none!important;padding:16px max(16px,calc((100% - 1000px)/2))!important}
+.hero h1{font-size:26px}h1{font-size:26px}
+button{font-size:12px;padding:5px 10px}.b{overflow:visible!important}
+button svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-3px;margin-right:4px}
+header button{width:34px;height:34px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;flex:0 0 auto}header button svg,#zc button svg,#pv button svg{margin:0;width:18px;height:18px}
+header #lo{width:auto;padding:0 12px}header #lo svg{margin-right:6px}
+#bk span{font-size:17px}
+[data-tip]{position:relative}[data-tip]:hover::after{content:attr(data-tip);position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#293247;color:#fff;font:600 11px 'Plus Jakarta Sans',sans-serif;padding:4px 9px;border-radius:8px;white-space:nowrap;z-index:70;pointer-events:none;animation:fi .15s}
+header [data-tip]:last-child:hover::after{left:auto;right:0;transform:none}
+#zc [data-tip]:hover::after{top:50%;left:auto;right:calc(100% + 8px);transform:translateY(-50%)}
+#zc button{width:36px;height:36px;padding:0;display:flex;align-items:center;justify-content:center}
+#pv button{width:30px;height:30px;padding:0;display:inline-flex;align-items:center;justify-content:center}
+#q{width:34px!important;height:34px;padding:0 0 0 32px!important;background:rgba(255,255,255,.18) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M11 4a7 7 0 1 0 .01 0M16 16l5 5'/%3E%3C/svg%3E") no-repeat 8px center/18px;transition:width .25s;cursor:pointer}
+#q:focus,#q:not(:placeholder-shown){width:160px!important;cursor:text}#q::placeholder{color:transparent}#q:focus::placeholder{color:rgba(255,255,255,.75)}
+#ti{height:34px;width:190px!important}.gr>div button{padding:4px 7px}
+@media(max-width:700px){#bk span{display:none}#ti{width:110px!important}#st{display:none!important}header{gap:5px;padding-left:8px;padding-right:8px}}
 </style></head><body>
 <svg id="dd" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#A33DB0" stroke-width="1.2"><path d="M40 60l60 20-60 20 12-20z"/><rect x="690" y="50" width="42" height="54" rx="6"/><path d="M700 68h22M700 80h16"/><circle cx="740" cy="520" r="22"/><path d="M60 500q40-50 90 0t90-20"/><ellipse cx="90" cy="300" rx="26" ry="8" stroke="#D64D9A"/><path d="M64 300v34a26 8 0 0 0 52 0v-34" stroke="#F47C58"/><path d="M400 570l8 14 14 8-14 8-8 14-8-14-14-8 14-8z"/></svg>
-<header><b id="bk"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="5" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="19" cy="19" r="2"/><path d="M10 10 5.5 6.5M14.5 11l4-4M13.5 14l4 4"/></svg>Mindoodle</b><input id="ti" class="edo" placeholder="Judul mind map"><span class="sp"></span><input id="q" class="edo" placeholder="Cari…"><span id="hc" class="edo"></span><button id="sh" class="edo e">Bagikan</button><button id="dl" class="edo">Unduh ▾</button><button id="hs" class="edo e">Riwayat</button><span id="st" class="edo" style="font-size:12px;opacity:.85"></span><button id="lo">Masuk dengan Gmail</button><button id="av" class="av" hidden></button></header>
+<header><b id="bk" data-tip="Beranda"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" style="margin:0"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="5" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="19" cy="19" r="2"/><path d="M10 10 5.5 6.5M14.5 11l4-4M13.5 14l4 4"/></svg><span>Mindoodle</span></b><input id="ti" class="edo" placeholder="Judul mind map"><span class="sp"></span><input id="q" class="edo" placeholder="Cari teks, komentar, link"><span id="hc" class="edo"></span><button id="sh" class="edo e" data-tip="Bagikan"><svg viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg></button><button id="dl" class="edo" data-tip="Unduh"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 11l5 5 5-5M4 20h16"/></svg></button><button id="hs" class="edo e" data-tip="Riwayat"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5M12 7v5l3 2"/></svg></button><span id="st" class="edo" style="font-size:12px;opacity:.85"></span><button id="lo" data-tip="Masuk dengan Gmail"><svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>Masuk</button><button id="av" class="av" hidden data-tip="Profil"></button></header>
 <main id="home"></main>
-<section id="ed" hidden><div id="cvw"><div id="pv" hidden>Pratinjau riwayat <button id="pk" class="b">Simpan</button><button id="pc">Batal</button></div><svg id="cv"><defs><linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><g id="w"></g></svg><div id="zc"><button id="zi">+</button><button id="zo">−</button></div><div id="hint" hidden>Sorot cabang → tombol + · Klik kanan → pengaturan · Klik-ganda → edit teks</div></div></section><div id="cx" hidden></div><div id="ip" hidden></div><div id="pop" hidden></div><textarea id="te" hidden></textarea>
+<section id="ed" hidden><div id="cvw"><div id="pv" hidden>Pratinjau riwayat <button id="pk" class="b" data-tip="Simpan versi ini"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button><button id="pc" data-tip="Batal"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div><svg id="cv"><defs><linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><g id="w"></g></svg><div id="zc"><button id="zi" data-tip="Perbesar"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><button id="zo" data-tip="Perkecil"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button><button id="ft" data-tip="Pas layar"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div><div id="hint" hidden>Sorot cabang → tombol + · Klik kanan → pengaturan · Klik-ganda → edit teks</div></div></section><div id="cx" hidden></div><div id="ip" hidden></div><div id="pop" hidden></div><textarea id="te" hidden></textarea>
 <div id="sp" hidden><svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path class="l" d="M50 50 20 25"/><path class="l" d="M50 50 80 28"/><path class="l" d="M50 50 72 82"/><path class="l" d="M50 50 24 76"/><circle cx="50" cy="50" r="12" fill="#fff"/><circle cx="20" cy="25" r="7" fill="#FFD3E6" style="animation-delay:.9s"/><circle cx="80" cy="28" r="7" fill="#FFE2D6" style="animation-delay:1s"/><circle cx="72" cy="82" r="7" fill="#E7D9FA" style="animation-delay:1.1s"/><circle cx="24" cy="76" r="7" fill="#FFD3E6" style="animation-delay:1.2s"/></svg><h2>Mindoodle</h2><p id="sq"></p><button id="go">Mulai berpikir →</button></div><dialog id="dlg"></dialog><div id="toast" hidden></div>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
@@ -132,13 +151,13 @@ async function route(){const m=location.hash.match(/^#\/m\/(\w+)/);if(m){if(mid!
 /* ---------- home ---------- */
 async function home(){$('#home').hidden=false;$('#ed').hidden=true;document.body.classList.remove('inmap');const h=$('#home');
  if(!U){h.innerHTML='<div class="hero"><h1>Mindoodle</h1><p>Peta pikiran untuk apa saja: catatan belajar, rencana proyek, brainstorming. Privat atau publik, bisa dikerjakan bersama.</p><button id="li">Masuk dengan Gmail</button></div><div class="card"><h3>Punya link peta publik?</h3><p>Tidak perlu login untuk melihatnya.</p><input id="pl" placeholder="Tempel link peta di sini"><button class="b" id="op" style="margin-top:8px">Buka peta</button></div>';$('#li').onclick=login;$('#op').onclick=()=>{const m=$('#pl').value.match(/#\/m\/\w+/);m?location.hash=m[0]:toast('Link tidak valid')};return}
- const hr=new Date().getHours(),sp=hr<11?'pagi':hr<15?'siang':hr<19?'sore':'malam';h.innerHTML=`<div class="hero"><h1>Selamat ${sp}, ${esc((S.name||U.displayName||'Teman').split(' ')[0])}!</h1><p>Apa yang mau kamu petakan hari ini?</p><div class="stats" id="stt"></div></div><div class="bar"><h3>Peta saya</h3><span><button class="b" id="nm">+ Peta kosong</button> <button id="nt">+ Template contoh</button></span></div><div class="gr" id="gr">Memuat…</div>`;
+ const hr=new Date().getHours(),sp=hr<11?'pagi':hr<15?'siang':hr<19?'sore':'malam';h.innerHTML=`<div class="hero"><h1>Selamat ${sp}, ${esc((S.name||U.displayName||'Teman').split(' ')[0])}!</h1><p>Apa yang mau kamu petakan hari ini?</p><div class="stats" id="stt"></div></div><div class="bar"><h3>Peta saya</h3><span><button class="b" id="nm" data-tip="Peta kosong baru">${I.plus}Baru</button> <button id="nt" data-tip="Mulai dari template contoh">${I.spark}Template</button></span></div><div class="gr" id="gr">Memuat…</div>`;
  $('#nm').onclick=()=>newMap(false);$('#nt').onclick=()=>newMap(true);
  try{const C=db.collection('maps'),em=U.email.toLowerCase(),[a,b]=await Promise.all([C.where('owner','==',U.uid).get(),C.where('editors','array-contains',em).get()]),all={};
  a.forEach(s=>all[s.id]=s.data());b.forEach(s=>all[s.id]=s.data());const ids=Object.keys(all).sort((x,y)=>all[y].updated-all[x].updated);
  $('#stt').innerHTML=`<span>${ids.length} peta</span><span>${ids.filter(i=>all[i].public).length} publik</span><span>${ids.filter(i=>all[i].owner!==U.uid).length} dibagikan ke saya</span>`;$('#gr').innerHTML=ids.length?'':'<p>Belum ada peta. Mulai dari template contoh!</p>';
  ids.forEach(id=>{const d=all[id],own=d.owner===U.uid,c=document.createElement('div');c.innerHTML=`<h3>${esc(d.title)}</h3><span class="pl ${d.public?'g':''}">${d.public?'Publik':'Privat'}</span>${own?'':'<span class="pl o">Editor</span>'}<p style="color:var(--s);font-size:12px">${new Date(d.updated).toLocaleString('id-ID')}</p>`;
-  c.onclick=()=>location.hash='#/m/'+id;if(own){const x=document.createElement('button');x.textContent='Hapus';x.onclick=async e=>{e.stopPropagation();if(confirm('Hapus peta "'+d.title+'" permanen?')){await db.collection('maps').doc(id).delete();home()}};c.append(x)}$('#gr').append(c)})}
+  c.onclick=()=>location.hash='#/m/'+id;if(own){const x=document.createElement('button');x.innerHTML=I.trash;x.dataset.tip='Hapus peta';x.onclick=async e=>{e.stopPropagation();if(confirm('Hapus peta "'+d.title+'" permanen?')){await db.collection('maps').doc(id).delete();home()}};c.append(x)}$('#gr').append(c)})}
  catch(e){$('#gr').textContent='Gagal memuat: '+e.code}}
 const TPL=["Ide Utama","globe",[["Tujuan","law",[["Apa yang ingin dicapai?"],["Ukuran sukses"]]],["Tugas","file",[["Yang harus dilakukan","",[["Langkah 1"],["Langkah 2"]]],["Tenggat"]]],["Orang","user",[["Tim"],["Pemangku kepentingan"]]],["Sumber","globe",[["Tempel link: [Google Drive](https://drive.google.com)"],["Referensi & dokumen"]]],["Anggaran","wallet",[["Biaya"],["Sumber dana"]]]]];
 function seed(){let c=0;const o={};const b=(a,p,col)=>{const id='n'+String(++c).padStart(4,'0');o[id]={t:a[0],p,x:0,y:0,c:col,s:p?(o[p].p?'u':'rr'):'rr',i:a[1]||''};(a[2]||[]).forEach((x,i)=>b(x,id,p?col:COL[i%7]))};
@@ -188,7 +207,7 @@ function render(){const g=$('#w');g.textContent='';const gE=el('g'),gN=el('g'),g
  for(const id in N){const n=N[id];if(!n.p||!N[n.p]||n.h)continue;const e=epath(n.p,id),col=n.lc||n.c||COL[0];
   gE.append(el('path',{d:e.d,fill:'none',stroke:col,'stroke-width':N[n.p].p?2.8:3.6,'stroke-linecap':'round','stroke-dasharray':n.l==2?'8 6':'none'}),el('path',{d:e.d,fill:'none',stroke:'transparent','stroke-width':14,'data-e':id}));
   if(id===sel&&canEdit&&!prev)gH.append(el('circle',{cx:e.hx,cy:e.hy,r:7,class:'hd','data-h':id}))}
- const hv=canEdit&&!prev&&hov&&N[hov]&&!(drag&&drag.moved)?hov:null;
+ const hid=hov||(NH?sel:null),hv=canEdit&&!prev&&hid&&N[hid]&&!(drag&&drag.moved)?hid:null;
  if(hv){const z=sizes[hv],n=N[hv];[['r',z.w/2+20,0],['l',-z.w/2-20,0],['t',0,-z.h/2-20],['b',0,z.h/2+20]].forEach(([d,dx,dy])=>{const a=el('g',{class:'ad','data-add':hv+','+d,transform:`translate(${n.x+dx},${n.y+dy})`});a.append(el('circle',{r:11}),el('path',{d:'M-5 0H5M0-5V5'}));gH.append(a)});
   if(!n.cm){const q=ib(hv,n.x+z.w/2-4,n.y-z.h/2-2);q.setAttribute('class','ci ghost');gH.append(q)}}
  apply();lastNew=null}
@@ -229,23 +248,23 @@ function arrange(){const r=root();if(!r)return;const lay=(k,p,y0,d)=>{N[k].x=N[p
 const autoArr=()=>{arrange();change();setTimeout(fit,50)};
 /* ---------- interaksi ---------- */
 const wp=e=>{const r=cv.getBoundingClientRect();return{x:(e.clientX-r.left-V.x)/V.k,y:(e.clientY-r.top-V.y)/V.k}};
-cv.onpointerdown=e=>{if(e.button)return;const T=e.target,p=wp(e);if(T.closest('a'))return;
+cv.onpointerdown=e=>{if(e.button)return;PT.set(e.pointerId,[e.clientX,e.clientY]);if(PT.size===2){clearTimeout(lp);lp=null;drag=null;const[a,b]=[...PT.values()];pz={d:Math.hypot(a[0]-b[0],a[1]-b[1])||1,k:V.k,cx:(a[0]+b[0])/2,cy:(a[1]+b[1])/2,vx:V.x,vy:V.y};cv.setPointerCapture(e.pointerId);return}const T=e.target,p=wp(e);if(T.closest('a'))return;
  const ad=T.closest('[data-add]');if(ad){const[i,d]=ad.dataset.add.split(',');return addAt(i,d)}
  const ci=T.closest('[data-ci]');if(ci)return comment(ci.dataset.ci,e.clientX,e.clientY);
  const hd=T.dataset.h,nd=T.closest('.nd');
  if(hd&&canEdit&&!prev)drag={m:'h',id:hd};else if(nd){sel=hov=nd.dataset.id;drag={m:'n',id:sel,x:p.x,y:p.y,ids:canEdit&&!prev?sub(sel):[]};render()}else{if(sel){sel=null;render()}drag={m:'p',x:e.clientX,y:e.clientY,vx:V.x,vy:V.y}}
  if(e.pointerType==='touch'){lp0=[e.clientX,e.clientY];lp=setTimeout(()=>{drag=null;ctx(T,lp0[0],lp0[1])},550)}cv.setPointerCapture(e.pointerId)};
-cv.onpointermove=e=>{if(lp&&(Math.abs(e.clientX-lp0[0])>6||Math.abs(e.clientY-lp0[1])>6)){clearTimeout(lp);lp=null}
+cv.onpointermove=e=>{if(PT.has(e.pointerId))PT.set(e.pointerId,[e.clientX,e.clientY]);if(pz&&PT.size>=2){const[a,b]=[...PT.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]),r=cv.getBoundingClientRect(),k=Math.min(3,Math.max(.1,pz.k*d/pz.d)),mx=(a[0]+b[0])/2-r.left,my=(a[1]+b[1])/2-r.top,ox=pz.cx-r.left,oy=pz.cy-r.top;V.k=k;V.x=mx-(ox-pz.vx)*k/pz.k;V.y=my-(oy-pz.vy)*k/pz.k;apply();return}if(lp&&(Math.abs(e.clientX-lp0[0])>6||Math.abs(e.clientY-lp0[1])>6)){clearTimeout(lp);lp=null}
  if(!drag){const T=e.target,h=T.closest&&(T.closest('.nd')||T.closest('[data-add]')||T.closest('[data-ci]')),id=h&&(h.dataset.id||(h.dataset.add&&h.dataset.add.split(',')[0])||h.dataset.ci);
   if(id){clearTimeout(hT);hT=null;if(hov!==id){hov=id;render()}}else if(hov&&!hT)hT=setTimeout(()=>{hov=null;hT=null;render()},450);return}
  if(drag.m==='p'){V.x=drag.vx+e.clientX-drag.x;V.y=drag.vy+e.clientY-drag.y;apply();return}const p=wp(e);
  if(drag.m==='n'&&drag.ids.length){const dx=p.x-drag.x,dy=p.y-drag.y;if(!drag.moved&&Math.abs(dx)+Math.abs(dy)<2)return;drag.moved=1;drag.ids.forEach(k=>{N[k].x+=dx;N[k].y+=dy});drag.x=p.x;drag.y=p.y;render()}
  if(drag.m==='h'){const n=N[drag.id],q=epath(n.p,drag.id);n.o=[2*(p.x-q.mx),2*(p.y-q.my)];drag.moved=1;render()}};
-cv.onpointerup=()=>{clearTimeout(lp);lp=null;if(drag&&drag.moved)change();drag=null};
+cv.onpointerup=e=>{PT.delete(e.pointerId);if(pz){if(PT.size<2){pz=null;drag=null}return}clearTimeout(lp);lp=null;if(drag&&drag.moved)change();drag=null};cv.onpointercancel=e=>{PT.delete(e.pointerId);pz=null;drag=null};
 cv.onclick=e=>{const a=e.target.closest('a');if(a){e.preventDefault();open(a.getAttribute('href'),'_blank','noopener')}};
 cv.ondblclick=e=>{const h=e.target.dataset.h,nd=e.target.closest('.nd');if(h&&canEdit){delete N[h].o;change()}else if(nd)editText(nd.dataset.id)};
 cv.oncontextmenu=e=>{e.preventDefault();ctx(e.target,e.clientX,e.clientY)};
-cv.onwheel=e=>{e.preventDefault();const r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,k=Math.min(3,Math.max(.1,V.k*(e.deltaY<0?1.1:.9)));V.x=mx-(mx-V.x)*k/V.k;V.y=my-(my-V.y)*k/V.k;V.k=k;apply()};
+cv.onwheel=e=>{e.preventDefault();const r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,k=Math.min(3,Math.max(.1,V.k*(e.ctrlKey?Math.exp(-e.deltaY*.01):(e.deltaY<0?1.1:.9))));V.x=mx-(mx-V.x)*k/V.k;V.y=my-(my-V.y)*k/V.k;V.k=k;apply()};
 document.onkeydown=e=>{if($('#ed').hidden||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||!canEdit||!sel||!N[sel])return;if(e.key==='Tab'){e.preventDefault();addAt(sel,'r')}else if(e.key==='Enter'&&N[sel].p)addAt(N[sel].p,'r');else if(e.key==='F2')editText(sel);else if(e.key==='Delete')del()};
 /* ---------- header ---------- */
 $('#dl').onclick=e=>{const r=e.currentTarget.getBoundingClientRect();showMenu(r.left,r.bottom+6,p=>{mi(p,'Unduh XML (OPML)',expXML);mi(p,'Unduh PDF (lewat cetak)',expPDF)})};
@@ -274,4 +293,8 @@ const expPDF=()=>{const s=sel,h=hit;sel=null;hit=new Set();render();const g=$('#
 function confetti(){for(let i=0;i<40;i++){const d=document.createElement('div');d.className='cf';d.style.cssText=`left:50%;top:40%;background:${COL[i%7]};--x:${(Math.random()-.5)*600}px;--y:${Math.random()*400}px;--r:${Math.random()*720}deg`;document.body.append(d);setTimeout(()=>d.remove(),1400)}}
 $('#zi').onclick=()=>{V.k=Math.min(3,V.k*1.2);apply()};$('#zo').onclick=()=>{V.k=Math.max(.1,V.k/1.2);apply()};
 (()=>{let seen;try{seen=sessionStorage.getItem('sp')}catch(e){}const s=$('#sp');if(seen||location.hash.startsWith('#/m/'))return;s.hidden=false;const tx='Pikirkan. Petakan. Bagikan.';let i=0;const iv=setInterval(()=>{$('#sq').textContent=tx.slice(0,++i);if(i>=tx.length)clearInterval(iv)},60);$('#go').onclick=()=>{s.classList.add('out');setTimeout(()=>s.hidden=true,700);confetti();try{sessionStorage.setItem('sp',1)}catch(e){}}})();
+const PT=new Map(),NH=matchMedia('(hover:none)').matches;let pz=null;
+const I={plus:'<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>',spark:'<svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg>',trash:'<svg viewBox="0 0 24 24" style="margin:0"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>'};
+$('#ft').onclick=fit;
+if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 </script></body></html>
